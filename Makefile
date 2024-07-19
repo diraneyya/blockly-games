@@ -60,14 +60,14 @@ deps:
 	wget -N https://unpkg.com/@babel/standalone@7.14.8/babel.min.js
 	mv babel.min.js appengine/third-party/
 	@# GitHub doesn't support git archive, so download files using svn.
-	./svn-export-fix.sh ajaxorg ace-builds master src-min-noconflict appengine/third-party/ace
-	./svn-export-fix.sh NeilFraser blockly-for-BG master . appengine/third-party/blockly
-	./svn-export-fix.sh CreateJS SoundJS master lib appengine/third-party/SoundJS
+	./svn-export-fix.sh ajaxorg ace-builds master appengine/third-party/ace src-min-noconflict 
+	./svn-export-fix.sh NeilFraser blockly-for-BG master appengine/third-party/blockly
+	./svn-export-fix.sh CreateJS SoundJS master appengine/third-party/SoundJS lib
 
 	cp third-party/base.js appengine/third-party/
 	cp -R third-party/soundfonts appengine/third-party/
 
-	./svn-export-fix.sh NeilFraser JS-Interpreter master . appengine/third-party/JS-Interpreter
+	./svn-export-fix.sh NeilFraser JS-Interpreter master appengine/third-party/JS-Interpreter
 	@# Compile JS-Interpreter using SIMPLE_OPTIMIZATIONS because the Music game needs to mess with the stack.
 	java -jar build/third-party-downloads/closure-compiler.jar\
 	  --language_out ECMASCRIPT5\
